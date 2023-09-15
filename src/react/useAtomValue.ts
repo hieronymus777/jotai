@@ -95,7 +95,9 @@ export function useAtomValue<Value>(atom: Atom<Value>, options?: Options) {
       }
       rerender()
     })
-    rerender()
+    if (store.get(atom) !== currVal) {
+      rerender()
+    }
     return unsub
   }, [store, atom, delay])
 
